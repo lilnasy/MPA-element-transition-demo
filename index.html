@@ -1,0 +1,12 @@
+<script type="module">
+	const button = document.querySelector('button#x')
+	const currentPosition = button.getBoundingClientRect()
+	onbeforeunload = _ => sessionStorage.setItem('button', JSON.stringify(currentPosition))
+	button.onclick = _ => {
+		// navigate to 'target.html' which should exist at the same path depth as the current one
+		const x = location.pathname.split('/')
+		const y = x.slice(0, x.length - 1).join('/')
+		location.pathname =  y + '/target.html'
+	}
+</script>
+<button id="x">Button 3</button>

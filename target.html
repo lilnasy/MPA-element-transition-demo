@@ -1,0 +1,19 @@
+<button>Button 1</button>
+<button>Button 2</button>
+<button id="x">Button 3</button>
+<script>
+{	
+	const button = document.querySelector('button#x')
+	const currentPosition = button.getBoundingClientRect()
+	const formerPosition = JSON.parse(sessionStorage.getItem('button'))
+	button.style = 'position: absolute; top: 0; left: 0;'
+	button.animate(
+		{ translate: [
+			`${formerPosition.left}px ${formerPosition.top}px`,
+			`${currentPosition.left}px ${currentPosition.top}px`
+			]
+		},
+		{ duration: 500, easing: 'ease-in-out' }
+	).onfinish = _ => button.removeAttribute('style')
+}
+</script>
